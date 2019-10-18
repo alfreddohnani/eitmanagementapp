@@ -24,5 +24,17 @@
     "autoprefixer": "^9.6.5",
     "css-mqpacker": "^7.0.0",
     "postcss-csso": "^3.0.0"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions",
+          "> 2%"
+        ]
+      },
+      "css-mqpacker": {},
+      "postcss-csso": {}
+    }
   }
 }
