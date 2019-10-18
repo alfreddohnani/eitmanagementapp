@@ -1,10 +1,9 @@
 import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import { LoginPage } from './pages/Login/LoginPage.component';
 
 const App = () => (
   <div>
-    
+    <LoginPage />
   </div>
 );
 
