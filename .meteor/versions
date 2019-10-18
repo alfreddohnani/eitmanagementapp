@@ -33,11 +33,13 @@ htmljs@1.0.11
 id-map@1.1.0
 insecure@1.0.7
 inter-process-messaging@0.1.0
+juliancwirko:postcss@2.0.3
 launch-screen@1.1.1
 livedata@1.0.18
 logging@1.1.20
 meteor@1.9.3
 meteor-base@1.4.0
+minifier-css@1.4.2
 minifier-js@2.4.1
 minimongo@1.4.5
 mobile-experience@1.0.5
