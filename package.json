@@ -19,5 +19,10 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.6.5",
+    "css-mqpacker": "^7.0.0",
+    "postcss-csso": "^3.0.0"
   }
 }
