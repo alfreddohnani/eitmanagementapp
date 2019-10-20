@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
 import { LoginForm } from '../../components/LoginForm/LoginForm.component';
+import Container from 'react-bootstrap/Container';
 
 
-class LoginPage extends Component {
+export default class LoginPage extends Component {
 
 
     render() {
 
         return (
-            <LoginForm />
+            <Container className="h-100">
+                <LoginForm />
+            </Container>
         );
     }
 }

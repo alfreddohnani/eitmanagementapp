@@ -32,7 +32,7 @@
   "postcss": {
     "plugins": {
       "autoprefixer": {
-        "browserslist": [
+        "overrideBrowserslist": [
           "last 2 versions",
           "> 2%"
         ]

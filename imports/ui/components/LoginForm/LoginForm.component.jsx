@@ -1,27 +1,29 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 export const LoginForm = () => {
 
     return (
-        <div>
-            <form>
-                <div classNameName="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+        <Row className="justify-content-center h-100 d-flex align-self-center">
+            <Col sm="8" md="4" className="">
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control type="email" placeholder="Enter email" />
+                    </Form.Group>
 
-                </div>
-                <div classNameName="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                </div>
-                <div className="form-group form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-        </div>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Control type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Login
+                </Button>
+                </Form>
+            </Col>
+        </Row>
     );
 }
