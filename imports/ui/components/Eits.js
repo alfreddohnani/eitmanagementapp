@@ -8,8 +8,8 @@ class Eits extends React.Component {
       <div className="row">
         <CardDeck>
           {this.props.eits.map(eit => (
-            <div className="col-md-6 my-2">
-              <Eit  key={eit.id} eit={eit} />
+            <div key={eit._id} className="col-md-6 my-2">
+              <Eit eit={eit} {...this.props}  />
             </div>
           ))}
         </CardDeck>

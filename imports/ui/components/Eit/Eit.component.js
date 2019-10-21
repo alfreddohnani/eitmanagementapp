@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 
+
 class Eit extends React.Component {
   eit = this.props.eit;
 
@@ -13,6 +14,10 @@ class Eit extends React.Component {
 
   deleteEit = () => {
     EitCollection.remove(this.eit._id);
+  }
+
+  editEit = () => {
+    this.props.history.push(`/edit/${this.eit._id}`);
   }
 
   render() {
@@ -33,6 +38,9 @@ class Eit extends React.Component {
           <Button onClick={this.deleteEit} className="btn-sm mx-2" variant="danger">
             Delete
           </Button>
+          <Button onClick={this.editEit} className="btn-sm mx-2" variant="info">
+            Edit
+          </Button>
           <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
@@ -42,7 +50,7 @@ class Eit extends React.Component {
               className="custom-control-input"
               id="customCheck1"
             />
-            <label className="custom-control-label" for="customCheck1"></label>
+            <label className="custom-control-label" htmlFor="customCheck1"></label>
           </div>
         </Card.Footer>
       </Card>

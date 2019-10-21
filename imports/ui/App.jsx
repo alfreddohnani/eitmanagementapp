@@ -23,7 +23,7 @@ class App extends React.Component {
     return (
       <div className="container p-5">
         <Button onClick={this.handleClick} variant="primary" className="mx-auto my-5">Add New EIT</Button>
-        <Eits eits={this.props.eits} />
+        <Eits {...this.props} />
       </div>
     );
   }
