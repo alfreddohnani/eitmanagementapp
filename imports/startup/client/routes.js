@@ -5,14 +5,13 @@ import { createBrowserHistory } from "history";
 
 // Route components
 import App from "../../ui/App";
-import EitList from "../../ui/components/EitList/EitList.component";
+import EitForm from '../../ui/components/EitForm/EitForm.component';
+
 const browserHistory = createBrowserHistory();
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-    <Switch>
-      <Route exact path="/" component={App} />{" "}
-      <Route exact path="/eits" component={EitList} />
-    </Switch>{" "}
+      <Route exact path="/" component={App} />
+      <Route exact  path="/new" component={EitForm} />
   </Router>
 );
