@@ -6,10 +6,10 @@ import ReactDOM from 'react-dom';
 
 class UpdateEitForm extends React.Component {
   handleSubmit = event => {
-    const firstname = ReactDOM.findDOMNode(this.refs.firstname).defaultValue.trim();
-    const lastname = ReactDOM.findDOMNode(this.refs.lastname).defaultValue.trim();
-    const email = ReactDOM.findDOMNode(this.refs.email).defaultValue.trim();
-    const bio = ReactDOM.findDOMNode(this.refs.bio).defaultValue.trim();
+    const firstname = ReactDOM.findDOMNode(this.refs.firstname).value.trim();
+    const lastname = ReactDOM.findDOMNode(this.refs.lastname).value.trim();
+    const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+    const bio = ReactDOM.findDOMNode(this.refs.bio).value.trim();
 
     console.log(this.props.eit._id);
     Meteor.call("eits.update", this.props.eit._id, {
