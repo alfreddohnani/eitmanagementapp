@@ -1,11 +1,15 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import ReactDOM from "react-dom";
 import { EitCollection } from "../../../api/eits";
+import { Link } from 'react-router-dom';
 
 import ToastNotification from "../Toasts/Toast.component";
 
 export default class EitForm extends React.Component {
+  state = {
+    showAlert: false
+  };
   handleSubmit = event => {
     const firstname = ReactDOM.findDOMNode(this.refs.firstname).value.trim();
     const lastname = ReactDOM.findDOMNode(this.refs.lastname).value.trim();
@@ -20,18 +24,30 @@ export default class EitForm extends React.Component {
       createdAt: new Date() // current time
     });
 
-    console.log(firstname);
-
     // Clear form
     ReactDOM.findDOMNode(this.refs.firstname).value = "";
     ReactDOM.findDOMNode(this.refs.lastname).value = "";
     ReactDOM.findDOMNode(this.refs.email).value = "";
     ReactDOM.findDOMNode(this.refs.bio).value = "";
+
+    this.setState({ showAlert: true });
   };
 
   render() {
     return (
       <>
+        <Alert
+          show={this.state.showAlert}
+          variant="success"
+          onClose={() => this.setState({ showAlert: false })}
+          dismissible
+        >
+          <Alert.Heading>Success</Alert.Heading>
+          <p>
+            Eit added successfully. <Link to="/">View all EITs</Link>
+          </p>
+        </Alert>
+
         <div className="container p-1">
           <h3 className="text-center">Add New EIT</h3>
           <Form className="col-md-6 mx-auto">
