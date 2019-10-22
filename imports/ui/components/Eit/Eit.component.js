@@ -19,7 +19,7 @@ class Eit extends React.Component {
   };
 
   editEit = () => {
-    this.props.history.push(`/edit/${this.eit._id}`);
+    this.props.history.push(`/edit/${this.props.eit._id}`);
   };
 
   
