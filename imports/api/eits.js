@@ -22,7 +22,7 @@ Meteor.methods({
 
     EitCollection.insert({
       firstname: data.firstname,
-      lasttname: data.lastname,
+      lastname: data.lastname,
       email: data.email,
       bio: data.bio,
       createdAt: new Date(),
