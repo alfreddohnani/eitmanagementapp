@@ -37,9 +37,9 @@ class Eit extends React.Component {
           <Card.Text>{bio}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button className="btn-sm mx-2" variant="primary">
+          {/* <Button className="btn-sm mx-2" variant="primary">
             View
-          </Button>
+          </Button> */}
           <Button
             onClick={this.deleteEit}
             className="btn-sm mx-2"
