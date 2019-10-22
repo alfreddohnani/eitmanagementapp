@@ -32,6 +32,7 @@ class App extends React.Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe('eits');
   return {
     eits: EitCollection.find({}, { sort: { createdAt: -1 } }).fetch(),
     currentUser: Meteor.user()

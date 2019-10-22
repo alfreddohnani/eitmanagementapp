@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 import { withTracker } from "meteor/react-meteor-data";
 import ReactDOM from 'react-dom';
+import {Redirect} from 'react-router-dom';
  
 class UpdateEitForm extends React.Component {
   handleSubmit = event => {
@@ -80,6 +81,7 @@ export default withTracker(props => {
   const id = props.match.params.id;
 
   return {
-    eit: EitCollection.findOne(id)
+    eit: EitCollection.findOne(id),
+    currentUser: Meteor.user(),
   };
 })(UpdateEitForm);
