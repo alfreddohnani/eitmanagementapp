@@ -14,7 +14,8 @@ class Eits extends React.Component {
     const numberOfCheckedEntries = checkedEntries.length;
     return (
       <div className="row">
-        {numberOfCheckedEntries >= 1 ? (
+        
+        {this.props.currentUser && numberOfCheckedEntries >= 1 ? (
           <Button onClick={this.bulkDelete.bind(null, checkedEntries)} className="ml-auto" variant="danger">
             Bulk delete({numberOfCheckedEntries})
           </Button>

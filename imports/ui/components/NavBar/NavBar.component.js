@@ -1,5 +1,6 @@
 import React from "react";
 import AccountsUIWrapper from "../AccountsUIWrapper/AccountsUIWrapper";
+import { Link } from "react-router-dom";
 
 export default class NavBar extends React.Component {
   render() {
@@ -27,11 +28,18 @@ export default class NavBar extends React.Component {
                 EIT MANAGEMENT APP<span className="sr-only">(current)</span>
               </a>
             </li>
-            <li className="nav-item  ml-auto">
+            <li className="nav-item">
               <a className="nav-link" href="#">
                 <AccountsUIWrapper />
               </a>
             </li>
+            {this.props.currentUser ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/new">add new eit</Link>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </nav>

@@ -2,7 +2,8 @@ import React from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import ReactDOM from "react-dom";
 import { EitCollection } from "../../../api/eits";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Meteor } from "meteor/meteor";
 
 import ToastNotification from "../Toasts/Toast.component";
 
@@ -21,7 +22,9 @@ export default class EitForm extends React.Component {
       lastname,
       email,
       bio,
-      createdAt: new Date() // current time
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
     });
 
     // Clear form

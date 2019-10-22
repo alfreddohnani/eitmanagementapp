@@ -11,7 +11,6 @@ class UpdateEitForm extends React.Component {
     const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
     const bio = ReactDOM.findDOMNode(this.refs.bio).value.trim();
 
-    console.log(this.props.eit._id);
     Meteor.call("eits.update", this.props.eit._id, {
       firstname: firstname,
       lastname: lastname,
