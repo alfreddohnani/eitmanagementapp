@@ -6,7 +6,6 @@ import { Link, Redirect } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 
-import ToastNotification from "../Toasts/Toast.component";
 
 class EitForm extends React.Component {
   state = {
@@ -18,15 +17,12 @@ class EitForm extends React.Component {
     const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
     const bio = ReactDOM.findDOMNode(this.refs.bio).value.trim();
 
-    EitCollection.insert({
+    Meteor.call("eits.insert", {
       firstname,
       lastname,
       email,
-      bio,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username
-    });
+      bio
+    })
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.firstname).value = "";
