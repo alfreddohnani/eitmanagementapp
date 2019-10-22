@@ -16,7 +16,9 @@ class Eit extends React.Component {
   };
 
   deleteEit = () => {
-    if (this.props.eit.owner !== this.props.currentUser) {
+    console.log('---logging owner', this.props.eit.owner);
+    console.log('-----logging currentUser', this.props.currentUser._id);
+    if (this.props.eit.owner !== this.props.currentUser._id) {
       this.setState({ showAlert: true });
       return;
       // throw new Meteor.Error("not-authorized");
@@ -25,7 +27,7 @@ class Eit extends React.Component {
   };
 
   editEit = () => {
-    if (this.props.eit.owner !== this.props.currentUser) {
+    if (this.props.eit.owner !== this.props.currentUser._id) {
       this.setState({ showAlert: true });
       return;
       // throw new Meteor.Error("not-authorized");
@@ -34,7 +36,7 @@ class Eit extends React.Component {
   };
 
   render() {
-    const { firstname, lastname, bio, checked, username } = this.props.eit;
+    const { firstname, lastname, bio, checked } = this.props.eit;
 
     const eitClassName = checked ? "checked" : "";
     return (
@@ -61,9 +63,9 @@ class Eit extends React.Component {
             View
           </Button> */}
             <small>
-              Added by:{" "}
+              Added by:
               <i>
-                {this.props.currentUser ? this.props.currentUser.username : ""}{" "}
+                {this.props.eit.username ? this.props.eit.username : ""}{" "}
               </i>
             </small>
             {this.props.currentUser ? (
