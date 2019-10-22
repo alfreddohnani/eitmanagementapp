@@ -9,7 +9,7 @@ class Eits extends React.Component {
   };
   bulkDelete = (eits, event) => {
     eits.forEach(eit => {
-      if (eit.owner !== this.props.currentUser) {
+      if (eit.owner !== this.props.currentUser._id) {
         this.setState({ showAlert: true });
         return;
         // throw new Meteor.Error("not-authorized");
@@ -22,7 +22,7 @@ class Eits extends React.Component {
     const numberOfCheckedEntries = checkedEntries.length;
     return (
       <>
-      <div clasName="row">
+      <div className="row">
       <Alert
         show={this.state.showAlert}
         variant="danger"

@@ -2,17 +2,26 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 import { withTracker } from "meteor/react-meteor-data";
-import ReactDOM from 'react-dom';
-import {Redirect} from 'react-router-dom';
- 
+import ReactDOM from "react-dom";
+import { Redirect } from "react-router-dom";
+
 class UpdateEitForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.id = React.createRef();
+  }
+
   handleSubmit = event => {
+    const id = this.props.match.params.id;
+
     const firstname = ReactDOM.findDOMNode(this.refs.firstname).value.trim();
     const lastname = ReactDOM.findDOMNode(this.refs.lastname).value.trim();
     const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
     const bio = ReactDOM.findDOMNode(this.refs.bio).value.trim();
-
-    Meteor.call("eits.update", this.props.eit._id, {
+    
+    Meteor.call("eits.update", id, {
       firstname: firstname,
       lastname: lastname,
       email: email,
@@ -20,11 +29,9 @@ class UpdateEitForm extends React.Component {
     });
   };
   render() {
-    
-
     const eit = this.props.eit;
     if (!this.props.currentUser) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
     return (
       <>
@@ -79,9 +86,8 @@ class UpdateEitForm extends React.Component {
 
 export default withTracker(props => {
   const id = props.match.params.id;
-
   return {
-    eit: EitCollection.findOne(id),
-    currentUser: Meteor.user(),
+    eit: EitCollection.findOne({ _id: id }),
+    currentUser: Meteor.user()
   };
 })(UpdateEitForm);

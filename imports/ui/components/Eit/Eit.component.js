@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Button, Col, Alert } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 import ReactDOM from "react-dom";
-import { timingSafeEqual } from "crypto";
 
 class Eit extends React.Component {
   state = {
@@ -16,8 +15,7 @@ class Eit extends React.Component {
   };
 
   deleteEit = () => {
-    console.log('---logging owner', this.props.eit.owner);
-    console.log('-----logging currentUser', this.props.currentUser._id);
+   
     if (this.props.eit.owner !== this.props.currentUser._id) {
       this.setState({ showAlert: true });
       return;
