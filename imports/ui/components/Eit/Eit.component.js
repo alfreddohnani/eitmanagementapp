@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 import ReactDOM from 'react-dom';
+import { timingSafeEqual } from "crypto";
 
 class Eit extends React.Component {
 
@@ -27,7 +28,7 @@ class Eit extends React.Component {
   render() {
    
 
-    const { firstname, lastname, bio, checked } = this.props.eit;
+    const { firstname, lastname, bio, checked, username } = this.props.eit;
 
     const eitClassName = checked ? "checked" : "";
     return (
@@ -40,7 +41,10 @@ class Eit extends React.Component {
           {/* <Button className="btn-sm mx-2" variant="primary">
             View
           </Button> */}
-          <Button
+          <small>Added by: <i>{this.props.currentUser ? this.props.currentUser.username : ''} </i></small>
+          { this.props.currentUser ? (
+            <div>
+        <Button
             onClick={this.deleteEit}
             className="btn-sm mx-2"
             variant="danger"
@@ -56,6 +60,10 @@ class Eit extends React.Component {
               checked={checked}
               onChange={this.toggleCheck}
             />
+         
+          </div>
+           ): ("")  
+          }
         </Card.Footer>
       </Card>
     );

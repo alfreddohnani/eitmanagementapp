@@ -2,12 +2,13 @@ import React from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import ReactDOM from "react-dom";
 import { EitCollection } from "../../../api/eits";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
+import { withTracker } from "meteor/react-meteor-data";
 
 import ToastNotification from "../Toasts/Toast.component";
 
-export default class EitForm extends React.Component {
+class EitForm extends React.Component {
   state = {
     showAlert: false
   };
@@ -24,7 +25,7 @@ export default class EitForm extends React.Component {
       bio,
       createdAt: new Date(),
       owner: Meteor.userId(),
-      username: Meteor.user().username,
+      username: Meteor.user().username
     });
 
     // Clear form
@@ -37,6 +38,10 @@ export default class EitForm extends React.Component {
   };
 
   render() {
+    if (!this.props.currentUser) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <>
         <Alert
@@ -83,3 +88,9 @@ export default class EitForm extends React.Component {
     );
   }
 }
+
+export default withTracker(() => {
+  return {
+    currentUser: Meteor.user()
+  };
+})(EitForm);

@@ -19,7 +19,12 @@ class UpdateEitForm extends React.Component {
     });
   };
   render() {
+    
+
     const eit = this.props.eit;
+    if (!this.props.currentUser) {
+      return <Redirect to="/" />
+    }
     return (
       <>
         <div className="container p-1">
