@@ -23,7 +23,7 @@ class Eits extends React.Component {
         )}
         <CardDeck>
           {this.props.eits.map(eit => (
-            <div key={eit._id} className="col-md-4 my-2">
+            <div key={eit._id} className="col-lg-4 mb-4">
               <Eit eit={eit} {...this.props} />
             </div>
           ))}

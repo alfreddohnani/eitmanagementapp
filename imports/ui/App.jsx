@@ -6,6 +6,8 @@ import {EitCollection} from '../api/eits';
 
 import { withTracker } from 'meteor/react-meteor-data';
 
+import AccountsUIWrapper from './components/AccountsUIWrapper/AccountsUIWrapper';
+
 class App extends React.Component {
   // constructor(){
   //   super();
@@ -22,7 +24,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="container p-5">
-        <Button onClick={this.handleClick} variant="primary" className="mx-auto my-5">Add New EIT</Button>
+        <AccountsUIWrapper />
+        <Button onClick={this.handleClick} variant="primary" className="mx-auto my-5 text-center">Add New EIT</Button>
         <Eits {...this.props} />
       </div>
     );
