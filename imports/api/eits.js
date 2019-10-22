@@ -5,8 +5,6 @@ export const EitCollection = new Mongo.Collection("eits");
 Meteor.methods({
   "eits.update"(id, neweit) {
 
-    console.log(neweit);
-
     EitCollection.update(id, {
       $set: {
         firstname: neweit.firstname,
@@ -15,5 +13,9 @@ Meteor.methods({
         bio: neweit.bio
       }
     });
+  },
+  "eits.delete"(id) {
+  
+      EitCollection.remove(id);
   }
 });

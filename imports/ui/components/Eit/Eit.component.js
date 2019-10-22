@@ -1,29 +1,35 @@
 import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
-
+import ReactDOM from 'react-dom';
 
 class Eit extends React.Component {
-  eit = this.props.eit;
 
-  toggleChecked = () => {
-    EitCollection.update(this.eit._id, {
-      $set: { checked: !this.eit.checked }
-    });
+  toggleCheck = () => {
+    
+    EitCollection.update(this.props.eit._id, {
+      $set: {
+        checked: !this.props.eit.checked
+      }
+    })
   };
 
   deleteEit = () => {
-    EitCollection.remove(this.eit._id);
-  }
+    EitCollection.remove(this.props.eit._id);
+  };
 
   editEit = () => {
     this.props.history.push(`/edit/${this.eit._id}`);
-  }
+  };
+
+  
 
   render() {
-    const { firstname, lastname, bio , checked} = this.eit;
+   
 
-    const eitClassName = checked ? 'checked' : '';
+    const { firstname, lastname, bio, checked } = this.props.eit;
+
+    const eitClassName = checked ? "checked" : "";
     return (
       <Card>
         <Card.Img variant="top" src="holder.js/100px160" />
@@ -35,23 +41,22 @@ class Eit extends React.Component {
           <Button className="btn-sm mx-2" variant="primary">
             View
           </Button>
-          <Button onClick={this.deleteEit} className="btn-sm mx-2" variant="danger">
+          <Button
+            onClick={this.deleteEit}
+            className="btn-sm mx-2"
+            variant="danger"
+          >
             Delete
           </Button>
           <Button onClick={this.editEit} className="btn-sm mx-2" variant="info">
             Edit
           </Button>
-          <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
-              readOnly
-              checked={!!checked}
-              onClick={this.toggleChecked}
-              className="custom-control-input"
-              id="customCheck1"
+              ref="checkInput"
+              checked={checked}
+              onChange={this.toggleCheck}
             />
-            <label className="custom-control-label" htmlFor="customCheck1"></label>
-          </div>
         </Card.Footer>
       </Card>
     );
