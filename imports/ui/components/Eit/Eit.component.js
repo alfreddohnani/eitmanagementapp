@@ -32,7 +32,6 @@ class Eit extends React.Component {
     const eitClassName = checked ? "checked" : "";
     return (
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
           <Card.Title>{`${firstname} ${lastname}`}</Card.Title>
           <Card.Text>{bio}</Card.Text>
