@@ -16,6 +16,6 @@ export default class AccountsUIWrapper extends React.Component {
   }
 
   render() {
-      return <span className="btn btn-primary btn-sm mr-auto" ref="container" />;
+      return <span ref="container" />;
   }
 }
