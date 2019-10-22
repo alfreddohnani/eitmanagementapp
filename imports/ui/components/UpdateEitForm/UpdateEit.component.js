@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { EitCollection } from "../../../api/eits";
 import { withTracker } from "meteor/react-meteor-data";
 import ReactDOM from 'react-dom';
-
+ 
 class UpdateEitForm extends React.Component {
   handleSubmit = event => {
     const firstname = ReactDOM.findDOMNode(this.refs.firstname).value.trim();
