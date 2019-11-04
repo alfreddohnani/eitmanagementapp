@@ -27,9 +27,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.6.5",
+    "chai": "^4.2.0",
     "css-mqpacker": "^7.0.0",
-    "postcss-csso": "^3.0.0",
     "postcss": "^6.0.22",
+    "postcss-csso": "^3.0.0",
     "postcss-load-config": "^1.2.0"
   },
   "postcss": {
