@@ -89,12 +89,13 @@ describe("eitmanagementapp", function() {
   });
 
   it("cannot edit eit if not logged in", function() {
-    if (!user.loggedIn) {
+    const loggedIn = loggedInUser;
+    if (!loggedIn) {
       throw new Meteor.Error("You must be logged in to edit eit");
     }
 
     const eit = database.find({}).fetch()[0];
-    const id = eit.id;
+    const id = eit._id;
     const updatedEit = {
       firstname: "Melina",
       lastname: "Johannsen",
