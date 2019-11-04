@@ -126,22 +126,23 @@ describe("eitmanagementapp", function() {
   });
 
   it("cannot delete eit if not logged in", function() {
-    if (!user.loggedIn) {
+    const loggedIn = loggedInUser;
+    if (!loggedIn) {
       throw new meteor.Error("You must be logged in to delete");
     }
     const eit = database.find({}).fetch()[0];
-    const id = eit.id;
+    const id = eit._id;
 
-    database.remove(id);
+    database.remove({_id:id});
 
-    assert.equal(database.findOne(id), {});
+    assert.equal(database.findOne({_id:id}), undefined);
   });
 
   it("cannot edit someone else's eit", function() {
-    const randomUser = RandomUser();
-    const currentUser = user;
+    const randomUser = fakeUserId;
+    const currentUser = loggedInUser;
 
-    if (randomUser.id === currentUser.id) {
+    if (randomUser._id === currentUser._id) {
       throw new Meteor.Error("Random user must be different from current user");
     }
 
