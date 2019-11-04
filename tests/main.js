@@ -45,7 +45,7 @@ describe("eitmanagementapp", function() {
 
   it("can view eit", function() {
     const id = database.find({}).fetch()[0]._id;
-    assert.equal(database.findOne({_id:id})._id, id);
+    assert.equal(database.findOne({ _id: id })._id, id);
   });
 
   it("cannot add eit if not logged in", function() {
@@ -65,18 +65,19 @@ describe("eitmanagementapp", function() {
   });
 
   it("can edit eit", function() {
-    const eit = database.find({}).first();
-    const id = eit.id;
+    const eit = database.find({}).fetch()[0];
+    const id = eit._id;
     const updatedEit = {
       firstname: "Melina",
       lastname: "Johannsen",
       email: "melinajoha@gmail.com",
       bio: "I am Melina Joha"
     };
+    console.log(eit.firstname);
 
     if (eit.firstname === updatedEit.firstname) {
-      throw new Error(
-        "Existing firstname is thesame as new firstname. Change new firstname."
+      throw new Meteor.Error(
+        "Existing firstname is thesame as new firstname. Change new firstname to be able to see edit effect."
       );
     }
 
@@ -89,10 +90,10 @@ describe("eitmanagementapp", function() {
 
   it("cannot edit eit if not logged in", function() {
     if (!user.loggedIn) {
-      throw new Error("You must be logged in to edit eit");
+      throw new Meteor.Error("You must be logged in to edit eit");
     }
 
-    const eit = database.find({}).first();
+    const eit = database.find({}).fetch()[0];
     const id = eit.id;
     const updatedEit = {
       firstname: "Melina",
@@ -102,7 +103,7 @@ describe("eitmanagementapp", function() {
     };
 
     if (eit.firstname === updatedEit.firstname) {
-      throw new Error(
+      throw new Meteor.Error(
         "Existing firstname is thesame as new firstname. Change new firstname."
       );
     }
@@ -115,7 +116,7 @@ describe("eitmanagementapp", function() {
   });
 
   it("can delete eit", function() {
-    const eit = database.find({}).first();
+    const eit = database.find({}).fetch()[0];
     const id = eit.id;
 
     database.remove(id);
@@ -125,9 +126,9 @@ describe("eitmanagementapp", function() {
 
   it("cannot delete eit if not logged in", function() {
     if (!user.loggedIn) {
-      throw new Error("You must be logged in to delete");
+      throw new meteor.Error("You must be logged in to delete");
     }
-    const eit = database.find({}).first();
+    const eit = database.find({}).fetch()[0];
     const id = eit.id;
 
     database.remove(id);
@@ -140,7 +141,7 @@ describe("eitmanagementapp", function() {
     const currentUser = user;
 
     if (randomUser.id === currentUser.id) {
-      throw new Error("Random user must be different from current user");
+      throw new Meteor.Error("Random user must be different from current user");
     }
 
     const eit = database.find({ user: randomUser });
@@ -151,7 +152,7 @@ describe("eitmanagementapp", function() {
 
       // edit eit
 
-      const eit = database.find({}).first();
+      const eit = database.find({}).fetch()[0];
       const id = eit.id;
       const updatedEit = {
         firstname: "Melina",
@@ -161,7 +162,7 @@ describe("eitmanagementapp", function() {
       };
 
       if (eit.firstname === updatedEit.firstname) {
-        throw new Error(
+        throw new Meteor.Error(
           "Existing firstname is thesame as new firstname. Change new firstname."
         );
       }
@@ -181,7 +182,7 @@ describe("eitmanagementapp", function() {
     const eit = database.find({ userId: randomUserId }).first();
     // ensure current user id is not thesame as random user id
     if (currentUserId === randomUserId) {
-      throw new Error("Current user cannot be thesame as random user");
+      throw new Meteor.Error("Current user cannot be thesame as random user");
     }
     // current user logs in
     login(userId);
