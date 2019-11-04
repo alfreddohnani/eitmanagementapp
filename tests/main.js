@@ -1,8 +1,8 @@
-import assert from "assert";
 import { userInfo } from "os";
 import { Meteor } from "meteor/meteor";
 import { EitCollection } from "../imports/api/eits";
 import { Random } from "meteor/random";
+import { assert } from "chai";
 
 describe("eitmanagementapp", function() {
   const database = EitCollection;
@@ -32,22 +32,20 @@ describe("eitmanagementapp", function() {
 
   it("can add eit", function() {
     const newEit = {
-      firstname: "John",
+      firstname: "Jane",
       lastname: "Doe",
-      email: "johndoe@gmail.com",
-      bio: "Hi there, I am John Doe"
+      email: "janedoe@gmail.com",
+      bio: "Hi there, I am Jane Doe"
     };
 
     database.insert(newEit);
 
-    assert(database.find({}).count(), 1);
+    assert.equal(database.find({}).count(), 2);
   });
 
   it("can view eit", function() {
-    const id = database.find({}).fetch()[0].id;
-    console.log(id);
-
-    assert(database.findOne(id), 1);
+    const id = database.find({}).fetch()[0]._id;
+    assert.equal(database.findOne({_id:id})._id, id);
   });
 
   it("cannot add eit if not logged in", function() {
