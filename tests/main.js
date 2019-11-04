@@ -49,8 +49,9 @@ describe("eitmanagementapp", function() {
   });
 
   it("cannot add eit if not logged in", function() {
+    const loggedIn = loggedInUser;
     if (!loggedIn) {
-      return;
+      throw new Meteor.Error("You must be logged in to add new eit");
     }
 
     const newEit = {
@@ -60,7 +61,7 @@ describe("eitmanagementapp", function() {
       bio: "Hi there, I am John Doe"
     };
 
-    assert(database.find({}.count(), 1));
+    assert(database.find({}).count(), 1);
   });
 
   it("can edit eit", function() {
