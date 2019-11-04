@@ -61,7 +61,7 @@ describe("eitmanagementapp", function() {
       bio: "Hi there, I am John Doe"
     };
 
-    assert(database.find({}).count(), 1);
+    assert.equal(database.find({}).count(), 1);
   });
 
   it("can edit eit", function() {
@@ -85,7 +85,7 @@ describe("eitmanagementapp", function() {
 
     const retrievedEit = database.findOne(id);
 
-    assert(retrievedEit.firstname, updatedEit.firstname);
+    assert.equal(retrievedEit.firstname, updatedEit.firstname);
   });
 
   it("cannot edit eit if not logged in", function() {
@@ -113,16 +113,16 @@ describe("eitmanagementapp", function() {
 
     const retrievedEit = database.findOne(id);
 
-    assert(retrievedEit.firstname, updatedEit.firstname);
+    assert.equal(retrievedEit.firstname, updatedEit.firstname);
   });
 
   it("can delete eit", function() {
     const eit = database.find({}).fetch()[0];
-    const id = eit.id;
+    const id = eit._id;
 
-    database.remove(id);
+    database.remove({_id:id});
 
-    assert(database.findOne(id), {});
+    assert.equal(database.findOne({_id:id}), undefined);
   });
 
   it("cannot delete eit if not logged in", function() {
@@ -134,7 +134,7 @@ describe("eitmanagementapp", function() {
 
     database.remove(id);
 
-    assert(database.findOne(id), {});
+    assert.equal(database.findOne(id), {});
   });
 
   it("cannot edit someone else's eit", function() {
@@ -172,7 +172,7 @@ describe("eitmanagementapp", function() {
 
       const retrievedEit = database.findOne(id);
 
-      assert(retrievedEit.firstname, updatedEit.firstname);
+      assert.equal(retrievedEit.firstname, updatedEit.firstname);
     }
   });
 
